@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="注册小米账号 - 开启智能生活新体验" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>注册 - 小米账号</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-page register-page">
+      <!-- Animated Background -->
+      <div class="auth-bg">
+        <div class="auth-bg-shape shape-1"></div>
+        <div class="auth-bg-shape shape-2"></div>
+        <div class="auth-bg-shape shape-3"></div>
+      </div>
+
+      <div class="auth-container">
+        <!-- Left Side - Branding -->
+        <div class="auth-brand">
+          <div class="brand-content">
+            <a href="index.html" class="brand-logo">
+              <img src="images/logo-png.png" alt="小米Logo" />
+            </a>
+            <h1 class="brand-title">加入小米</h1>
+            <p class="brand-subtitle">创建您的小米账号，开启智能生活</p>
+
+            <div class="brand-features">
+              <div class="feature-item">
+                <i class="fa-solid fa-rocket"></i>
+                <span>快速便捷注册</span>
+              </div>
+              <div class="feature-item">
+                <i class="fa-solid fa-house-laptop"></i>
+                <span>智能设备互联</span>
+              </div>
+              <div class="feature-item">
+                <i class="fa-solid fa-percent"></i>
+                <span>新用户专属优惠</span>
+              </div>
+            </div>
+
+            <div class="brand-image">
+              <img src="images/phone/10008.png" alt="小米手机" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side - Register Form -->
+        <div class="auth-form-wrapper">
+          <div class="auth-form-container">
+            <div class="auth-header">
+              <h2>创建账号</h2>
+              <p>填写以下信息完成注册</p>
+            </div>
+
+            <!-- Progress Steps -->
+            <div class="register-steps">
+              <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <span>基本信息</span>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <span>验证手机</span>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <span>完成注册</span>
+              </div>
+            </div>
+
+            <form class="auth-form" id="registerForm">
+              <!-- Step 1: Basic Info -->
+              <div class="form-step" id="step1">
+                <div class="form-group">
+                  <label for="phone">手机号码</label>
+                  <div class="input-wrapper phone-input">
+                    <span class="country-code">+86</span>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="请输入手机号码"
+                      pattern="[0-9]{11}"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="username">用户名</label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      placeholder="请设置用户名"
+                      minlength="3"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="reg-password">设置密码</label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input
+                      type="password"
+                      id="reg-password"
+                      name="password"
+                      placeholder="请设置登录密码"
+                      minlength="8"
+                      required
+                    />
+                    <button
+                      type="button"
+                      class="toggle-password"
+                      aria-label="显示密码"
+                    >
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                  <div class="password-strength">
+                    <div class="strength-segments">
+                      <span class="segment" data-level="1"></span>
+                      <span class="segment" data-level="2"></span>
+                      <span class="segment" data-level="3"></span>
+                      <span class="segment" data-level="4"></span>
+                      <span class="segment" data-level="5"></span>
+                    </div>
+                    <span class="strength-text">密码强度</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="confirm-password">确认密码</label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input
+                      type="password"
+                      id="confirm-password"
+                      name="confirmPassword"
+                      placeholder="请再次输入密码"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="auth-submit-btn next-step"
+                  data-next="2"
+                >
+                  <span>下一步</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <!-- Step 2: Verification -->
+              <div class="form-step hidden" id="step2">
+                <div class="verification-info">
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <p>
+                    验证码已发送至 <span id="maskedPhone">138****8888</span>
+                  </p>
+                </div>
+
+                <div class="form-group">
+                  <label for="verifyCode">验证码</label>
+                  <div class="code-input-group">
+                    <input type="text" maxlength="1" class="code-input" />
+                    <input type="text" maxlength="1" class="code-input" />
+                    <input type="text" maxlength="1" class="code-input" />
+                    <input type="text" maxlength="1" class="code-input" />
+                    <input type="text" maxlength="1" class="code-input" />
+                    <input type="text" maxlength="1" class="code-input" />
+                  </div>
+                </div>
+
+                <div class="resend-code">
+                  <span>没有收到验证码？</span>
+                  <button type="button" class="resend-btn" id="resendBtn">
+                    重新发送 (60s)
+                  </button>
+                </div>
+
+                <div class="step-buttons">
+                  <button
+                    type="button"
+                    class="auth-submit-btn secondary prev-step"
+                    data-prev="1"
+                  >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>上一步</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="auth-submit-btn next-step"
+                    data-next="3"
+                  >
+                    <span>验证</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3: Complete -->
+              <div class="form-step hidden" id="step3">
+                <div class="success-animation">
+                  <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <h3>注册成功！</h3>
+                  <p>欢迎加入小米大家庭</p>
+                </div>
+
+                <div class="welcome-benefits">
+                  <h4>新用户专享</h4>
+                  <div class="benefit-cards">
+                    <div class="benefit-card">
+                      <i class="fa-solid fa-ticket"></i>
+                      <span>100元优惠券</span>
+                    </div>
+                    <div class="benefit-card">
+                      <i class="fa-solid fa-crown"></i>
+                      <span>7天VIP体验</span>
+                    </div>
+                    <div class="benefit-card">
+                      <i class="fa-solid fa-truck-fast"></i>
+                      <span>免费配送</span>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  class="auth-submit-btn"
+                  onclick="window.location.href='index.html'"
+                >
+                  <span>开始探索</span>
+                  <i class="fa-solid fa-rocket"></i>
+                </button>
+              </div>
+            </form>
+
+            <div class="auth-divider step1-only">
+              <span>或使用以下方式注册</span>
+            </div>
+
+            <div class="social-login step1-only">
+              <button class="social-btn wechat" aria-label="微信注册">
+                <i class="fa-brands fa-weixin"></i>
+              </button>
+              <button class="social-btn qq" aria-label="QQ注册">
+                <i class="fa-brands fa-qq"></i>
+              </button>
+              <button class="social-btn weibo" aria-label="微博注册">
+                <i class="fa-brands fa-weibo"></i>
+              </button>
+            </div>
+
+            <div class="auth-footer step1-only">
+              <p>已有账号？<a href="login.html">立即登录</a></p>
+            </div>
+
+            <div class="auth-terms">
+              <label class="checkbox-wrapper">
+                <input type="checkbox" name="agree" required />
+                <span class="checkmark"></span>
+                <span
+                  >我已阅读并同意 <a href="#">《用户协议》</a> 和
+                  <a href="#">《隐私政策》</a></span
+                >
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Home -->
+      <a href="index.html" class="back-home">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>返回首页</span>
+      </a>
+    </div>
+
+    <script>
+      // Toggle password visibility
+      document.querySelectorAll(".toggle-password").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const input = this.parentElement.querySelector("input");
+          const icon = this.querySelector("i");
+
+          if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+      });
+
+      // Password strength indicator
+      const passwordInput = document.getElementById("reg-password");
+      const segments = document.querySelectorAll(".strength-segments .segment");
+      const strengthText = document.querySelector(".strength-text");
+
+      passwordInput.addEventListener("input", function () {
+        const password = this.value;
+        let strength = 0;
+
+        if (password.length >= 8) strength++;
+        if (password.match(/[a-z]/)) strength++;
+        if (password.match(/[A-Z]/)) strength++;
+        if (password.match(/[0-9]/)) strength++;
+        if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+        const colors = ["#ef4444", "#f97316", "#eab308", "#84cc16", "#10b981"];
+        const texts = ["很弱", "弱", "一般", "强", "很强"];
+
+        // Update segments
+        segments.forEach((segment, index) => {
+          if (index < strength) {
+            segment.style.background = colors[strength - 1];
+            segment.classList.add("active");
+          } else {
+            segment.style.background = "#e2e8f0";
+            segment.classList.remove("active");
+          }
+        });
+
+        // Update text
+        if (password.length > 0) {
+          strengthText.textContent = texts[strength - 1] || "很弱";
+          strengthText.style.color = colors[strength - 1] || "#ef4444";
+        } else {
+          strengthText.textContent = "密码强度";
+          strengthText.style.color = "#9ca3af";
+        }
+      });
+
+      // Step navigation
+      let currentStep = 1;
+
+      document.querySelectorAll(".next-step").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const nextStep = parseInt(this.dataset.next);
+
+          // Validation for step 1
+          if (currentStep === 1) {
+            const phone = document.getElementById("phone").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("reg-password").value;
+            const confirmPassword =
+              document.getElementById("confirm-password").value;
+
+            if (!phone || phone.length !== 11) {
+              showError("请输入正确的手机号码");
+              return;
+            }
+            if (!username || username.length < 3) {
+              showError("用户名至少3个字符");
+              return;
+            }
+            if (!password || password.length < 8) {
+              showError("密码至少8个字符");
+              return;
+            }
+            if (password !== confirmPassword) {
+              showError("两次输入的密码不一致");
+              return;
+            }
+
+            // Update masked phone
+            document.getElementById("maskedPhone").textContent =
+              phone.substring(0, 3) + "****" + phone.substring(7);
+
+            startCountdown();
+          }
+
+          // Validation for step 2
+          if (currentStep === 2) {
+            const codeInputs = document.querySelectorAll(".code-input");
+            let code = "";
+            codeInputs.forEach((input) => (code += input.value));
+
+            if (code.length !== 6) {
+              showError("请输入完整的验证码");
+              return;
+            }
+          }
+
+          goToStep(nextStep);
+        });
+      });
+
+      document.querySelectorAll(".prev-step").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const prevStep = parseInt(this.dataset.prev);
+          goToStep(prevStep);
+        });
+      });
+
+      function goToStep(step) {
+        document
+          .querySelectorAll(".form-step")
+          .forEach((el) => el.classList.add("hidden"));
+        document.getElementById("step" + step).classList.remove("hidden");
+
+        document
+          .querySelectorAll(".register-steps .step")
+          .forEach((el, index) => {
+            if (index + 1 <= step) {
+              el.classList.add("active");
+            } else {
+              el.classList.remove("active");
+            }
+          });
+
+        // Hide social login and footer on step 2 and 3
+        const step1Only = document.querySelectorAll(".step1-only");
+        if (step > 1) {
+          step1Only.forEach((el) => (el.style.display = "none"));
+        } else {
+          step1Only.forEach((el) => (el.style.display = ""));
+        }
+
+        currentStep = step;
+
+        // Success animation on step 3
+        if (step === 3) {
+          document.querySelector(".success-icon").classList.add("animate");
+        }
+      }
+
+      // Verification code inputs
+      const codeInputs = document.querySelectorAll(".code-input");
+      codeInputs.forEach((input, index) => {
+        input.addEventListener("input", function () {
+          if (this.value.length === 1 && index < codeInputs.length - 1) {
+            codeInputs[index + 1].focus();
+          }
+        });
+
+        input.addEventListener("keydown", function (e) {
+          if (e.key === "Backspace" && !this.value && index > 0) {
+            codeInputs[index - 1].focus();
+          }
+        });
+
+        input.addEventListener("paste", function (e) {
+          e.preventDefault();
+          const paste = (e.clipboardData || window.clipboardData).getData(
+            "text"
+          );
+          const digits = paste.replace(/\D/g, "").split("");
+
+          codeInputs.forEach((inp, i) => {
+            if (digits[i]) inp.value = digits[i];
+          });
+        });
+      });
+
+      // Countdown timer
+      function startCountdown() {
+        const resendBtn = document.getElementById("resendBtn");
+        let seconds = 60;
+        resendBtn.disabled = true;
+
+        const interval = setInterval(() => {
+          seconds--;
+          resendBtn.textContent = `重新发送 (${seconds}s)`;
+
+          if (seconds <= 0) {
+            clearInterval(interval);
+            resendBtn.textContent = "重新发送";
+            resendBtn.disabled = false;
+          }
+        }, 1000);
+      }
+
+      // Error display
+      function showError(message) {
+        const existing = document.querySelector(".error-toast");
+        if (existing) existing.remove();
+
+        const toast = document.createElement("div");
+        toast.className = "error-toast";
+        toast.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> ${message}`;
+        document.body.appendChild(toast);
+
+        setTimeout(() => toast.classList.add("show"), 10);
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+
+      // Input focus effects
+      document.querySelectorAll(".input-wrapper input").forEach((input) => {
+        input.addEventListener("focus", function () {
+          this.parentElement.classList.add("focused");
+        });
+        input.addEventListener("blur", function () {
+          this.parentElement.classList.remove("focused");
+        });
+      });
+    </script>
+  </body>
+</html>

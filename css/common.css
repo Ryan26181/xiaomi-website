@@ -1,0 +1,197 @@
+/* =========================
+   Reset & Global Style
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: #333;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* =========================
+   Global Color Variables
+   ========================= */
+:root {
+  --mi-orange: #ff6700;
+  --mi-orange-hover: #e65c00;
+  --mi-orange-light: #ff8533;
+  --text-main: #333;
+  --text-light: #999;
+  --text-lighter: #ccc;
+  --border-color: #e0e0e0;
+  --bg-gray: #f5f5f5;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --header-height: 60px;
+}
+
+/* =========================
+   Accessibility
+   ========================= */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--mi-orange);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 10000;
+  border-radius: 0 0 4px 0;
+  font-weight: 600;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Focus visible for better keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--mi-orange);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--mi-orange);
+  outline-offset: 3px;
+}
+
+/* =========================
+   Layout Container
+   ========================= */
+.container {
+  width: 1226px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1240px) {
+  .container {
+    width: 100%;
+    padding: 0 16px;
+  }
+}
+
+/* =========================
+   Button Style
+   ========================= */
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: var(--mi-orange);
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-normal);
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+  background-color: var(--mi-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-disabled:hover {
+  transform: none;
+}
+
+/* =========================
+   Input & Form
+   ========================= */
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--mi-orange);
+}
+
+/* =========================
+   Utility Classes
+   ========================= */
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* =========================
+   Common Hover Animation
+   ========================= */
+.hover-up {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hover-up:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}

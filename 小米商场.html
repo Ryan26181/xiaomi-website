@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="小米商场 - 探索小米全系列产品，包括手机、电视、智能家居、笔记本等。频极优惠，正品保证。"
+    />
+    <meta
+      name="keywords"
+      content="小米商场,小米手机,小米电视,智能家居,Redmi,小米笔记本"
+    />
+    <meta name="author" content="小米公司" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="小米商场 - 探索小米全系列产品" />
+    <meta
+      property="og:description"
+      content="小米官方商城，正品保证，快速配送"
+    />
+
+    <title>小米商场 - 探索小米全系列产品</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">跳转到主要内容</a>
+    <header role="banner">
+      <button
+        class="mobile-menu-btn"
+        aria-label="打开菜单"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="index.html" class="logo" aria-label="小米首页">
+        <img src="images/logo-png.png" alt="小米Logo" />
+      </a>
+      <nav class="navbar" role="navigation" aria-label="主导航">
+        <a href="index.html">小米官网</a>
+        <a href="小米商场.html">小米商场</a>
+        <a href="小米澎湃OS.html">小米澎湃OS</a>
+        <a href="小米汽车.html">小米汽车</a>
+        <a href="小米影像.html">小米影像</a>
+        <a href="云服务.html">云服务</a>
+        <a href="IoT.html">IoT</a>
+        <a href="有品.html">有品</a>
+        <a href="小爱开放平台.html">小爱开放平台</a>
+        <a href="Location.html">Location</a>
+      </nav>
+      <div class="auth-links" role="navigation" aria-label="用户账户">
+        <a class="cart-btn" href="#" aria-label="购物车">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </a>
+        <a class="login-btn" href="login.html">登录</a>
+        <span class="auth-separator" aria-hidden="true">|</span>
+        <a class="register-btn" href="register.html">注册</a>
+      </div>
+    </header>
+
+    <main id="main-content" role="main">
+      <!-- 顶部区域：左侧分类 + 右侧轮播 -->
+      <section class="shop-wrap" style="padding-top: 7rem">
+        <div class="shop-hero-grid">
+          <aside class="shop-categories" aria-label="商品分类">
+            <a href="#phone-section"
+              ><i class="fa-solid fa-mobile-screen-button"></i> 手机
+              <span>›</span></a
+            >
+            <a href="#tv-section"
+              ><i class="fa-solid fa-tv"></i> 电视 <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-house-chimney"></i> 家电 <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-laptop"></i> 笔记本 平板 显示器
+              <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-car"></i> 出行 穿戴 <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-headphones"></i> 耳机 音箱
+              <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-heart-pulse"></i> 健康 儿童
+              <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-couch"></i> 生活 箱包 <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-wifi"></i> 智能 路由器 <span>›</span></a
+            >
+            <a href="#"
+              ><i class="fa-solid fa-battery-full"></i> 电源 配件
+              <span>›</span></a
+            >
+          </aside>
+
+          <section class="hero shop-hero" aria-label="促销轮播">
+            <div class="slider" role="region" aria-live="polite">
+              <div class="slide">
+                <img
+                  src="images/product/10001.jpg"
+                  alt="小米新品发布 - 限时促销"
+                  loading="eager"
+                />
+              </div>
+              <div class="slide">
+                <img
+                  src="images/product/10002.jpg"
+                  alt="小米旗舰手机系列"
+                  loading="lazy"
+                />
+              </div>
+              <div class="slide">
+                <img
+                  src="images/product/10003.jpg"
+                  alt="智能家居体验"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="progress-indicators" role="group" aria-label="轮播进度">
+              <div class="progress-segment">
+                <span class="progress-fill"></span>
+              </div>
+              <div class="progress-segment">
+                <span class="progress-fill"></span>
+              </div>
+              <div class="progress-segment">
+                <span class="progress-fill"></span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 轮播下方三栏推广位 -->
+        <div class="promo-grid">
+          <a
+            class="promo"
+            href="#phone-section"
+            aria-label="Xiaomi 旗舰手机系列"
+          >
+            <img
+              src="images/product/10004.png"
+              alt="Xiaomi 旗舰手机"
+              loading="lazy"
+            />
+            <span class="promo-label">旗舰系列</span>
+          </a>
+          <a class="promo" href="#" aria-label="Redmi 系列">
+            <img
+              src="images/product/10005.jpg"
+              alt="Redmi 手机系列"
+              loading="lazy"
+            />
+            <span class="promo-label">Redmi 系列</span>
+          </a>
+          <a class="promo" href="#" aria-label="智能穿戴">
+            <img
+              src="images/product/10006.jpg"
+              alt="智能穿戴设备"
+              loading="lazy"
+            />
+            <span class="promo-label">智能穿戴</span>
+          </a>
+        </div>
+
+        <!-- 手机区块 -->
+        <section class="shop-section phone-section" id="phone-section">
+          <div class="shop-section-header">
+            <h2>手机</h2>
+            <a href="#" class="view-more" aria-label="查看更多">查看更多 ›</a>
+          </div>
+          <div class="phone-grid">
+            <div class="phone-banner">
+              <img
+                src="images/phone/10015.png"
+                alt="Xiaomi 旗舰系列宣传"
+                loading="lazy"
+              />
+            </div>
+
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10007.png"
+                alt="Xiaomi 17 Ultra 徕卡版"
+                loading="lazy"
+              />
+              <h3>Xiaomi 17 Ultra 徕卡版</h3>
+              <p class="sub">徕卡影像 | 骍龙8系列旗舰</p>
+              <p class="price">7999元起</p>
+              <span class="badge hot">热卖</span>
+            </a>
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10008.png"
+                alt="Xiaomi 17 Ultra"
+                loading="lazy"
+              />
+              <h3>Xiaomi 17 Ultra</h3>
+              <p class="sub">徕卡2亿像素 | 1英寸光影</p>
+              <p class="price">6999元起</p>
+              <span class="badge new">新品</span>
+            </a>
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10009.png"
+                alt="REDMI K90 Pro Max"
+                loading="lazy"
+              />
+              <h3>REDMI K90 Pro Max</h3>
+              <p class="sub">第五代骍龙8至尊版 | 超级影像</p>
+              <p class="price">3999元起</p>
+              <span class="badge hot">热卖</span>
+            </a>
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10010.png"
+                alt="REDMI K90"
+                loading="lazy"
+              />
+              <h3>REDMI K90</h3>
+              <p class="sub">骍龙8至尊版 | Sound by Bose 联合调教</p>
+              <p class="price">2599元起</p>
+              <span class="badge sale">促销</span>
+            </a>
+
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10011.png"
+                alt="Xiaomi 17 Pro Max"
+                loading="lazy"
+              />
+              <h3>Xiaomi 17 Pro Max</h3>
+              <p class="sub">徕卡影像大师 | 移动影像系统</p>
+              <p class="price">5999元起</p>
+              <span class="badge new">新品</span>
+            </a>
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10012.png"
+                alt="Xiaomi 17 Pro"
+                loading="lazy"
+              />
+              <h3>Xiaomi 17 Pro</h3>
+              <p class="sub">徕卡光学 Summilux 镜头 | 光影流转</p>
+              <p class="price">4999元起</p>
+            </a>
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10013.png"
+                alt="Xiaomi 17"
+                loading="lazy"
+              />
+              <h3>Xiaomi 17</h3>
+              <p class="sub">澎湃体验 | 高速旗舰</p>
+              <p class="price">4499元起</p>
+            </a>
+            <a class="phone-card" href="#">
+              <img
+                src="images/phone/10014.png"
+                alt="REDMI Note 15 Pro+"
+                loading="lazy"
+              />
+              <h3>REDMI Note 15 Pro+</h3>
+              <p class="sub">真抗摔 真防水 长续航</p>
+              <p class="price">1799元起</p>
+              <span class="badge sale">促销</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 电视区块 -->
+        <section class="shop-section tv-section" id="tv-section">
+          <div class="shop-section-header">
+            <h2>电视 & 家电</h2>
+            <a href="#" class="view-more" aria-label="查看更多">查看更多 ›</a>
+          </div>
+          <div class="tv-grid">
+            <div class="tv-banners">
+              <div class="tv-banner">
+                <img
+                  src="images/tv/10016.jpg"
+                  alt="小米电视S 系列宣传"
+                  loading="lazy"
+                />
+              </div>
+              <div class="tv-banner">
+                <img src="images/tv/10017.png" alt="精护洗Pro 洗烘10kg 宣传" />
+              </div>
+            </div>
+
+            <div class="tv-products">
+              <!-- 上排四个卡片 -->
+              <a class="tv-card" href="#">
+                <img
+                  src="images/tv/10018.png"
+                  alt="小米电视S Pro Mini LED 系列"
+                />
+                <h3>小米电视S Pro Mini LED 系列</h3>
+                <p class="sub">288Hz超高刷 | 4+64G大存储</p>
+                <p class="price">4999元起</p>
+              </a>
+              <a class="tv-card" href="#">
+                <img src="images/tv/10019.png" alt="小米电视 S Mini LED 系列" />
+                <h3>小米电视 S Mini LED 系列</h3>
+                <p class="sub">Mini LED 高分区背光 | 1200nits峰值亮度</p>
+                <p class="price">2999元起</p>
+              </a>
+              <a class="tv-card" href="#">
+                <img src="images/tv/10020.png" alt="Redmi 智能电视 X 2025款" />
+                <h3>Redmi 智能电视 X 2025款</h3>
+                <p class="sub">240Hz疾速模式 | 全色温双色域显示</p>
+                <p class="price">3499元起</p>
+              </a>
+              <a class="tv-card" href="#">
+                <img
+                  src="images/tv/10021.png"
+                  alt="巨省电Pro 1.5匹超一级能效 小米空调"
+                />
+                <h3>巨省电Pro 1.5匹超一级能效 小米空调</h3>
+                <p class="sub">新一代巨省电 Pro新升级</p>
+                <p class="price">2499元起</p>
+              </a>
+
+              <!-- 下排四个卡片 -->
+              <a class="tv-card" href="#">
+                <img src="images/tv/10022.png" alt="精护洗Pro 洗烘10kg" />
+                <h3>精护洗Pro 洗烘10kg</h3>
+                <p class="sub">蓝氧护衣洗 净白洁净除菌</p>
+                <p class="price">1999元起</p>
+              </a>
+              <a class="tv-card" href="#">
+                <img
+                  src="images/tv/10023.png"
+                  alt="巨省电Pro 立式3匹 超一级能效"
+                />
+                <h3>巨省电Pro 立式3匹 超一级能效</h3>
+                <p class="sub">硬核飓风 智能省电</p>
+                <p class="price">6116元起</p>
+              </a>
+              <a class="tv-card" href="#">
+                <img
+                  src="images/tv/10024.png"
+                  alt="米家迷你波轮洗衣机Pro 3kg"
+                />
+                <h3>米家迷你波轮洗衣机Pro 3kg</h3>
+                <p class="sub">高温煮洗 亲肤除螨</p>
+                <p class="price">3999元起</p>
+              </a>
+              <a class="tv-card" href="#">
+                <img src="images/tv/10025.jpg" alt="米家冰箱无霜 三门216L" />
+                <h3>米家冰箱无霜 三门216L</h3>
+                <p class="sub">无霜保鲜 三门分区</p>
+                <p class="price">1199元起</p>
+              </a>
+              <a class="tv-more-card" href="#">
+                <div class="more-text">
+                  <h3>浏览更多</h3>
+                  <p class="sub">电视影音</p>
+                </div>
+                <div class="more-arrow" aria-hidden="true">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 服务保障栏 -->
+        <div class="service-bar">
+          <div class="service-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>预约维修服务</span>
+          </div>
+          <div class="service-item">
+            <div class="service-icon-circle">7</div>
+            <span>7天无理由退货</span>
+          </div>
+          <div class="service-item">
+            <div class="service-icon-circle">15</div>
+            <span>15天免费换货</span>
+          </div>
+          <div class="service-item">
+            <i class="fa-solid fa-gift"></i>
+            <span>满69包邮</span>
+          </div>
+          <div class="service-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>1100余家售后网点</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        <div class="footer-content">
+          <div class="footer-section about">
+            <h3>关于小米</h3>
+            <p>
+              小米公司成立于2010年4月6日，是一家以智能手机、智能硬件和IoT平台为核心的互联网公司。
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="微信"
+                ><i class="fa-brands fa-weixin"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="微博"
+                ><i class="fa-brands fa-weibo"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="哔哩哔哩"
+                ><i class="fa-brands fa-bilibili"></i
+              ></a>
+              <a href="#" class="social-link" aria-label="抖音"
+                ><i class="fa-brands fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>产品</h3>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-mobile-screen"></i> 小米手机</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-tv"></i> 小米电视</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-laptop"></i> 小米笔记本</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-house-signal"></i> 智能家居</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>服务支持</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fa-solid fa-headset"></i> 售后服务</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-book"></i> 用户手册</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-circle-question"></i> 常见问题</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-shield-halved"></i> 保修政策</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>联系我们</h3>
+            <ul>
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                北京市海淀区上地十街10号
+              </li>
+              <li><i class="fa-solid fa-phone"></i> 电话: 400-100-5678</li>
+              <li>
+                <i class="fa-solid fa-envelope"></i> 邮箱: contact@xiaomi.com
+              </li>
+              <li><i class="fa-solid fa-clock"></i> 工作时间: 9:00-18:00</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>
+            &copy; 2026 小米公司 版权所有
+            <a href="#"><i class="fa-solid fa-lock"></i> 隐私政策</a>
+            <a href="#"><i class="fa-solid fa-file-contract"></i> 使用条款</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" aria-label="回到顶部">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="js/slideshow.js"></script>
+  </body>
+</html>

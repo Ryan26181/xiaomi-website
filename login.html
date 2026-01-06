@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="登录小米账号 - 探索更多小米服务" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>登录 - 小米账号</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-page">
+      <!-- Animated Background -->
+      <div class="auth-bg">
+        <div class="auth-bg-shape shape-1"></div>
+        <div class="auth-bg-shape shape-2"></div>
+        <div class="auth-bg-shape shape-3"></div>
+      </div>
+
+      <div class="auth-container">
+        <!-- Left Side - Branding -->
+        <div class="auth-brand">
+          <div class="brand-content">
+            <a href="index.html" class="brand-logo">
+              <img src="images/logo-png.png" alt="小米Logo" />
+            </a>
+            <h1 class="brand-title">欢迎回来</h1>
+            <p class="brand-subtitle">登录您的小米账号，探索更多精彩</p>
+
+            <div class="brand-features">
+              <div class="feature-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>安全登录保护</span>
+              </div>
+              <div class="feature-item">
+                <i class="fa-solid fa-cloud"></i>
+                <span>云服务数据同步</span>
+              </div>
+              <div class="feature-item">
+                <i class="fa-solid fa-gift"></i>
+                <span>专属会员福利</span>
+              </div>
+            </div>
+
+            <div class="brand-image">
+              <img src="images/phone/10007.png" alt="小米手机" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side - Login Form -->
+        <div class="auth-form-wrapper">
+          <div class="auth-form-container">
+            <div class="auth-header">
+              <h2>账号登录</h2>
+              <p>使用您的小米账号登录</p>
+            </div>
+
+            <form class="auth-form" id="loginForm">
+              <div class="form-group">
+                <label for="email">邮箱 / 手机号</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-user"></i>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="请输入邮箱或手机号"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password">密码</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-lock"></i>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="请输入密码"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    aria-label="显示密码"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-options">
+                <label class="checkbox-wrapper">
+                  <input type="checkbox" name="remember" />
+                  <span class="checkmark"></span>
+                  <span>记住我</span>
+                </label>
+                <a href="#" class="forgot-link">忘记密码？</a>
+              </div>
+
+              <button type="submit" class="auth-submit-btn">
+                <span>登 录</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+
+            <div class="auth-divider">
+              <span>或使用以下方式登录</span>
+            </div>
+
+            <div class="social-login">
+              <button class="social-btn wechat" aria-label="微信登录">
+                <i class="fa-brands fa-weixin"></i>
+              </button>
+              <button class="social-btn qq" aria-label="QQ登录">
+                <i class="fa-brands fa-qq"></i>
+              </button>
+              <button class="social-btn weibo" aria-label="微博登录">
+                <i class="fa-brands fa-weibo"></i>
+              </button>
+            </div>
+
+            <div class="auth-footer">
+              <p>还没有账号？<a href="register.html">立即注册</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Home -->
+      <a href="index.html" class="back-home">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>返回首页</span>
+      </a>
+    </div>
+
+    <script>
+      // Toggle password visibility
+      document.querySelectorAll(".toggle-password").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const input = this.parentElement.querySelector("input");
+          const icon = this.querySelector("i");
+
+          if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+          } else {
+            input.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+          }
+        });
+      });
+
+      // Form submission
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const btn = this.querySelector(".auth-submit-btn");
+          btn.classList.add("loading");
+          btn.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> 登录中...';
+
+          // Simulate login
+          setTimeout(() => {
+            btn.classList.remove("loading");
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> 登录成功！';
+            btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
+
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 1000);
+          }, 1500);
+        });
+
+      // Input focus effects
+      document.querySelectorAll(".input-wrapper input").forEach((input) => {
+        input.addEventListener("focus", function () {
+          this.parentElement.classList.add("focused");
+        });
+        input.addEventListener("blur", function () {
+          this.parentElement.classList.remove("focused");
+        });
+      });
+    </script>
+  </body>
+</html>
