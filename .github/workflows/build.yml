@@ -1,0 +1,95 @@
+name: Build
+
+# Tests the island and builds the Windows installers on every push. A tag like
+# `v0.1.0` also publishes them as a GitHub release.
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Cache cargo
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src-tauri/target
+          key: windows-cargo-${{ hashFiles('src-tauri/Cargo.lock') }}
+          restore-keys: windows-cargo-
+
+      - name: Install dependencies
+        run: npm ci
+
+      # One command per step: PowerShell carries on after a failed command in the same step.
+      - name: Type check and build the page
+        run: npm run build
+
+      - name: Island tests
+        run: npm test
+
+      - name: Rust tests
+        working-directory: src-tauri
+        run: cargo test --locked
+
+      - name: Build the installers
+        run: npx tauri build
+
+      - name: Collect the installers
+        id: pack
+        shell: pwsh
+        run: |
+          $version = (Get-Content src-tauri/tauri.conf.json | ConvertFrom-Json).version
+          New-Item -ItemType Directory -Force release | Out-Null
+          $bundle = "src-tauri/target/release/bundle"
+          Copy-Item (Get-ChildItem "$bundle/nsis/*-setup.exe" | Select-Object -First 1).FullName "release/Notchy-$version-setup.exe"
+          Copy-Item (Get-ChildItem "$bundle/msi/*.msi" | Select-Object -First 1).FullName "release/Notchy-$version.msi"
+          Copy-Item "src-tauri/target/release/notchy.exe" "release/Notchy-$version-portable.exe"
+          "version=$version" >> $env:GITHUB_OUTPUT
+          Get-ChildItem release | Format-Table Name, Length
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: Notchy-Windows-${{ steps.pack.outputs.version }}
+          path: release/*
+          retention-days: 14
+
+      - name: Check the tag matches the version
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}" -replace '^v', ''
+          if ($tag -ne "${{ steps.pack.outputs.version }}") { throw "tag says $tag but tauri.conf.json says ${{ steps.pack.outputs.version }}" }
+
+      - name: Publish the release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $v = "${{ steps.pack.outputs.version }}"
+          $notes = @"
+          Notchy $v — a Dynamic Island for Windows 10/11.
+
+          Download ``Notchy-$v-setup.exe`` and run it (no admin rights needed), or the ``.msi``. The installer is not code-signed yet, so Windows SmartScreen shows a warning: click **More info → Run anyway**.
+          "@
+          gh release create "${{ github.ref_name }}" release/* --title "Notchy $v" --notes $notes

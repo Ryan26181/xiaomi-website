@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "What the island may do. Everything that touches the OS goes through Notchy's own commands.",
+  "windows": ["island"],
+  "permissions": ["core:default"]
+}

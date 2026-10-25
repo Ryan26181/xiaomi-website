@@ -1,0 +1,56 @@
+[package]
+name = "notchy"
+description = "Notchy — a Dynamic Island for Windows"
+authors = ["Ryan26181"]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[lib]
+name = "notchy_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-single-instance = "2"
+tauri-plugin-autostart = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[target.'cfg(windows)'.dependencies]
+# Dragging a shelf file out of the island into Explorer, a chat or an editor.
+drag = "2"
+# Files dropped on the island are read straight from WebView2 (webview_drop.rs).
+webview2-com = "0.39"
+wv2_core = { package = "windows-core", version = "0.62" }
+# IIterable / IMapView for the Bluetooth watcher; already in the tree through windows.
+windows-collections = "0.3"
+windows = { version = "0.62", features = [
+  "Foundation",
+  "Foundation_Collections",
+  # Now playing: the system media controls every player publishes to.
+  "Media",
+  "Media_Control",
+  "Storage_Streams",
+  # Bluetooth headphones and their battery.
+  "Devices_Enumeration",
+  "Devices_Bluetooth",
+  # Charging.
+  "System_Power",
+  "Win32_Foundation",
+  "Win32_System_Com",
+  "Win32_System_Ole",
+  "Win32_UI_Input_KeyboardAndMouse",
+  "Win32_UI_Shell",
+  "Win32_UI_WindowsAndMessaging",
+] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
