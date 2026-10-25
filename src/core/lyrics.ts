@@ -14,7 +14,7 @@ export interface Lyrics {
 }
 
 const API = "https://lrclib.net/api";
-const CLIENT = "Notchy (https://github.com/Ryan26181/notchy)";
+const CLIENT = "Notchy (https://github.com/Ryan26181/xiaomi-website/tree/notchy)";
 
 /**
  * Parses LRC: `[mm:ss.xx] text`, several stamps on one line, `[offset:+/-ms]`.
